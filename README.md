@@ -1,4 +1,3 @@
-```
 # OLX Car Parser
 
 A Python web scraper that collects car listings from OLX Uzbekistan and exports them to CSV.
@@ -35,7 +34,9 @@ removes duplicates, and saves the results to a CSV file for further analysis.
 
 ## Installation
 
-    pip install requests beautifulsoup4
+```bash
+pip install requests beautifulsoup4
+```
 
 ---
 
@@ -43,15 +44,21 @@ removes duplicates, and saves the results to a CSV file for further analysis.
 
 1. Install dependencies:
 
-       pip install -r requirements.txt
+```bash
+pip install -r requirements.txt
+```
 
 2. Open `main.py` and set your output directory:
 
-       work_dir = r'C:\Your\Path\Here'
+```python
+work_dir = r'C:\Your\Path\Here'
+```
 
 3. Run the script:
 
-       python main.py
+```bash
+python main.py
+```
 
 4. Enter minimum and maximum price when prompted (without spaces, e.g. `10000000`)
 
@@ -76,9 +83,11 @@ The CSV file contains the following columns:
 
 Edit these variables in `main.py` to customize the scraper:
 
-    work_dir = r'C:\Your\Path\Here'  # Output directory
-    BASE_URL = 'https://www.olx.uz/transport/legkovye-avtomobili/'  # Target URL
-    MAX_PAGES = 26  # Number of pages to scrape
+```python
+work_dir = r'C:\Your\Path\Here'  # Output directory
+BASE_URL = 'https://www.olx.uz/transport/legkovye-avtomobili/'  # Target URL
+MAX_PAGES = 26  # Number of pages to scrape
+```
 
 ---
 
@@ -94,4 +103,3 @@ Edit these variables in `main.py` to customize the scraper:
 ## License
 
 MIT
-```
