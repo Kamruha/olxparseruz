@@ -6,7 +6,7 @@ from random import randint
 import os
 
 # Set working directory
-work_dir = # Put your directory here
+work_dir = r'C:\Your\Path\Here'  # Change this to your actual path
 os.chdir(work_dir)
 print(f"Working directory: {os.getcwd()}")
 
@@ -33,14 +33,15 @@ with open(output_file, 'w', newline="", encoding='utf-8') as f:
     for page in range(1, MAX_PAGES):
         url = f'{BASE_URL}?page={page}'
         headers = {'User-Agent': 'Mozilla/5.0'}
-        
+
+        # Send request; skip page on network error
         try:
             response = requests.get(url, headers=headers, timeout=10)
             response.encoding = 'utf-8'
         except requests.exceptions.RequestException as e:
             print(f"Error on page {page}: {e}")
             continue
-        
+
         soup = BeautifulSoup(response.text, 'html.parser')
         cards = soup.find_all('div', attrs={'data-cy': 'l-card'})
 
@@ -58,7 +59,7 @@ with open(output_file, 'w', newline="", encoding='utf-8') as f:
 
             # Get title text
             title = title.text.strip() if title else 'N/A'
-            
+
             # Get price text and clean it
             price = price.text.strip() if price else 'N/A'
             price = price.replace('сум', '').replace('Договорная', '').replace('Обмен', '').strip()
@@ -67,7 +68,6 @@ with open(output_file, 'w', newline="", encoding='utf-8') as f:
             # Skip if price is not a number
             if not price_num_str.isdigit():
                 continue
-
             price_num = int(price_num_str)
 
             # Price filter
